@@ -1,0 +1,33 @@
+import = [
+    "~/.config/alacritty/themes/default.toml"
+]
+[selection]
+save_to_clipboard = true
+
+[ env ]
+TERM = "xterm-256color"
+
+[window]
+padding.x = 2
+padding.y = 0
+opacity = 0.9
+blur = true
+
+decorations = "Buttonless"
+
+[font]
+normal.family = "JetbrainsMono Nerd Font"
+offset.x = 1  # For letter spacing (default: 0)
+offset.y = 8  # For line spacing (default: 0)
+
+#regular
+size = 16
+
+#for video
+# size = 35.0
+
+[keyboard]
+bindings = [
+  {key = "A", mods = "Command", chars = "\u0001"},
+  {key = "S", mods = "Command", chars = "\u0013"}
+]
