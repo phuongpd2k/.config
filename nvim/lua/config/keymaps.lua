@@ -48,6 +48,9 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Save
 keymap.set("n", "<C-s>", ":w<CR>")
 
+-- Copy
+keymap.set("v", "<C-c>", "y")
+
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
