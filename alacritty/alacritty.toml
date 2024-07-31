@@ -9,7 +9,7 @@ TERM = "xterm-256color"
 
 [window]
 padding.x = 2
-padding.y = 0
+padding.y = 2
 opacity = 0.9
 blur = true
 
@@ -17,11 +17,11 @@ decorations = "Buttonless"
 
 [font]
 normal.family = "JetbrainsMono Nerd Font"
-offset.x = 1  # For letter spacing (default: 0)
-offset.y = 8  # For line spacing (default: 0)
+offset.x = 2  # For letter spacing (default: 0)
+offset.y = 2  # For line spacing (default: 0)
 
 #regular
-size = 16
+size = 14
 
 #for video
 # size = 35.0
@@ -31,3 +31,7 @@ bindings = [
   {key = "A", mods = "Command", chars = "\u0001"},
   {key = "S", mods = "Command", chars = "\u0013"}
 ]
+
+[shell]
+program = "/usr/local/bin/fish"
+args = ["--login"]

@@ -16,6 +16,10 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "ls -l"
 alias lla "ll -A"
+alias lg lazygit
+alias ld lazydocker
+alias tns "tmux new-session -s"
+alias tks "tmux kill-session -t"
 alias g git
 alias vi nvim
 alias v nvim
@@ -58,15 +62,22 @@ if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/phuongpd/Downloads/google-cloud-sdk/path.fish.inc' ]
-    . '/Users/phuongpd/Downloads/google-cloud-sdk/path.fish.inc'
-end
-source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
+#if [ -f '/Users/phuongpd/Downloads/google-cloud-sdk/path.fish.inc' ]
+#    . '/Users/phuongpd/Downloads/google-cloud-sdk/path.fish.inc'
+#end
+#source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-status is-interactive &&
-    eval /Users/phuongpd/anaconda3/bin/conda "shell.fish" hook $argv | source
+if test -f /opt/anaconda3/bin/conda
+    eval /opt/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/opt/anaconda3/etc/fish/conf.d/conda.fish"
+        . "/opt/anaconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/opt/anaconda3/bin" $PATH
+    end
+end
 # <<< conda initialize <<<
 alias brain="code '/Users/phuongpd/Library/Mobile Documents/iCloud~md~obsidian/Documents/Second Brain'"
 # Tmux 
@@ -75,7 +86,7 @@ set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_hide_untrackedfiles 1
 
 set -g __fish_git_prompt_color_branch magenta bold
-set -g __fish_git_prompt_showupstream "informative"
+set -g __fish_git_prompt_showupstream informative
 set -g __fish_git_prompt_char_upstream_ahead "↑"
 set -g __fish_git_prompt_char_upstream_behind "↓"
 set -g __fish_git_prompt_char_upstream_prefix ""
