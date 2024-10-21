@@ -65,7 +65,8 @@ return {
         { "progress", separator = " ", padding = { left = 1, right = 0 } },
         { "location", padding = { left = 0, right = 1 } },
       },
-      lualine_y = { "fileformat", "filetype" },
+      -- lualine_y = { "fileformat", "filetype" },
+      lualine_y = { "filetype" },
       lualine_z = { "encoding" },
     }
 

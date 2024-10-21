@@ -28,7 +28,7 @@ return {
       reveal_cwd = ".",
       show_help = "g?",
       -- Default =
-      synchronize = "s",
+      synchronize = "=",
       trim_left = "<",
       trim_right = ">",
     },
@@ -131,8 +131,8 @@ return {
 
         map_split(buf_id, opts.mappings and opts.mappings.go_in_horizontal or "<C-w>s", "horizontal", false)
         map_split(buf_id, opts.mappings and opts.mappings.go_in_vertical or "<C-w>v", "vertical", false)
-        map_split(buf_id, opts.mappings and opts.mappings.go_in_horizontal_plus or "<C-w>S", "horizontal", true)
-        map_split(buf_id, opts.mappings and opts.mappings.go_in_vertical_plus or "<C-w>V", "vertical", true)
+        map_split(buf_id, opts.mappings and opts.mappings.go_in_horizontal_plus or "ss", "horizontal", true)
+        map_split(buf_id, opts.mappings and opts.mappings.go_in_vertical_plus or "sv", "vertical", true)
       end,
     })
 
@@ -160,7 +160,7 @@ return {
 
     local function mapSymbols(status)
       local statusMap = {
-        -- stylua: ignore start 
+        -- stylua: ignore start
         [" M"] = { symbol = "✹", hlGroup  = "MiniDiffSignChange"}, -- Modified in the working directory
         ["M "] = { symbol = "•", hlGroup  = "MiniDiffSignChange"}, -- modified in index
         ["MM"] = { symbol = "≠", hlGroup  = "MiniDiffSignChange"}, -- modified in both working tree and index

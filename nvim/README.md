@@ -1,3 +1,0 @@
-## Neovim Configuration
-
-Have fun!

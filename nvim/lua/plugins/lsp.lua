@@ -3,7 +3,19 @@ return {
   branch = "v2.x",
   dependencies = {
     -- LSP Support
-    { "neovim/nvim-lspconfig", branch = "v1.0.0" }, -- Required
+    {
+      "neovim/nvim-lspconfig",
+      branch = "v1.x",
+      config = function()
+        local lspconfig = require("lspconfig")
+        -- vim.diagnostic.config({
+        --   virtual_text = false,
+        -- })
+        -- Show line diagnostics automatically in hover window
+        vim.o.updatetime = 200
+        vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
+      end,
+    }, -- Required
     { -- Optional
       "williamboman/mason.nvim",
       build = function()
@@ -13,7 +25,6 @@ return {
     { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { auto_install = true } }, -- Optional
     -- Autocompletion
     { "hrsh7th/nvim-cmp" }, -- Required
-    { "github/copilot.vim" }, -- Required
     { "hrsh7th/cmp-nvim-lsp" }, -- Required
     { "L3MON4D3/LuaSnip" }, -- Required
     { "rafamadriz/friendly-snippets" },
@@ -68,23 +79,16 @@ return {
       ensure_installed = {
         "ts_ls",
         "eslint",
-        -- "rust_analyzer",
-        -- "kotlin_language_server",
-        "jdtls",
         "lua_ls",
         "jsonls",
         "html",
-        "elixirls",
         "tailwindcss",
-        "tflint",
         "pylsp",
         "dockerls",
         "bashls",
         "marksman",
-        -- "solargraph",
-        "cucumber_language_server",
-        "gopls",
-        "astro",
+        "yamlls",
+        "docker_compose_language_service",
       },
       handlers = {
         lsp.default_setup,
